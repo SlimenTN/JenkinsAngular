@@ -3,7 +3,8 @@ pipeline{
     stages{
         stage('Test'){
             steps{
-                bat 'ng test'
+                bat 'npm install'
+                bat 'npm test'
             }
             post{
                 success{
