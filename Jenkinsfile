@@ -1,17 +1,30 @@
 pipeline{
     agent any
     stages{
-        stage('Test'){
+        stage('Install dependencies'){
             steps{
                 bat 'npm install'
                 bat 'npm test'
             }
             post{
                 success{
-                    echo 'App successfully tested.'
+                    echo 'Dependencies successfully installed.'
                 }
                 failure{
-                    echo 'Tests failed!'
+                    echo 'Installation failed!'
+                }
+            }
+        }
+        stage('Build'){
+            steps{
+                bat 'npm run build --prod'
+            }
+            post{
+                success{
+                    echo 'App successfully built.'
+                }
+                failure{
+                    echo 'Build failed!'
                 }
             }
         }
