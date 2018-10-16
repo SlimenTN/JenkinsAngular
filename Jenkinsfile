@@ -27,5 +27,10 @@ pipeline{
                 }
             }
         }
+        stage('Deploy'){
+            steps{
+                bat 'move dist/jenkins-angular c://wamp64/www/testing-apps-space'
+            }
+        }
     }
 }
